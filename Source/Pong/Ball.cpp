@@ -16,4 +16,3 @@ ABall::ABall()
 	sprite->SetupAttachment(RootComponent);
 }
 
-

@@ -8,6 +8,8 @@
 #include "Components/SphereComponent.h"
 #include "Ball.generated.h"
 
+class APaddle;
+
 UCLASS()
 class PONG_API ABall : public AActor
 {
@@ -18,6 +20,10 @@ public:
 	ABall();
 
 protected:
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Hit Response", meta = (BlueprintProtected))
+		void HitPaddle(APaddle* paddle);
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Hit Response", meta = (BlueprintProtected))
+		void HitBoundary();
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="sprite", meta=(AllowPrivateAccess="true"))
