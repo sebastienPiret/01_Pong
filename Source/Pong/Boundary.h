@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/BoxComponent.h"
 #include "Boundary.generated.h"
+
+class APongGameMode;
 
 UCLASS()
 class PONG_API ABoundary : public AActor
@@ -16,13 +19,15 @@ public:
 	ABoundary();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="boundary type", meta=(BlueprintProtected))
+	bool isGoal = false;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "boundary type", meta = (BlueprintProtected))
+	bool isLeftGoal;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "References", meta = (BlueprintProtected))
+	APongGameMode* gameModeRef;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	
+private:
+	UPROPERTY(VisibleAnywhere,Category="Collision")
+	UBoxComponent* bounds;
 	
 };

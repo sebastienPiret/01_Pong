@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "PaperSpriteComponent.h"
+#include "Components/SphereComponent.h"
 #include "Ball.generated.h"
 
 UCLASS()
@@ -16,13 +18,12 @@ public:
 	ABall();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="sprite", meta=(AllowPrivateAccess="true"))
+	UPaperSpriteComponent* sprite;
 
-	
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "collision", meta = (AllowPrivateAccess = "true"))
+	USphereComponent* sphere;
 	
 };
