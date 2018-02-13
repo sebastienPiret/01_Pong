@@ -7,8 +7,7 @@
 *.o
 *.obj
 
-# mesh du jeux
-content/*
+
 
 # Precompiled Headers
 *.gch
